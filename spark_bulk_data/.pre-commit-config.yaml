@@ -1,0 +1,15 @@
+repos:
+- repo: https://github.com/psf/black
+  rev: 20.8b1
+  hooks:
+    - id: black
+      language_version: python3
+      stages: [commit]
+
+- repo: local
+  hooks:
+    - id: commit-message-check
+      name: check commit message format
+      entry: python3 commit_message.py
+      language: python
+      stages: [commit-msg]
