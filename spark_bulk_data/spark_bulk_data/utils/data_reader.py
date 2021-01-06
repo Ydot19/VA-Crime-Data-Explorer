@@ -26,16 +26,3 @@ def read_zip_folder(spark: SparkSession, zip_path: str, file_in_zip: str) -> Dat
     ret: DataFrame = spark.createDataFrame([columns(*x) for x in csv_tuples])
 
     return ret
-
-
-if __name__ == "__main__":
-    options = dict(
-        {
-            "zip_path": "spark_bulk_data/data/VA-2000.zip",
-            "file_in_zip": "nibrs_bias_motivation.csv",
-        }
-    )
-    data: DataFrame = spark_session_runner(
-        runner=read_zip_folder, app_name="TestReadCSVZip", **options
-    )
-    # read_zip_folder(zip_path=file, file_in_zip=name)
