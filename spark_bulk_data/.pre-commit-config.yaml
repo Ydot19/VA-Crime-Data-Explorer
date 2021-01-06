@@ -11,4 +11,5 @@ repos:
       name: check commit message format
       entry: python3 spark_bulk_data/commit_message.py
       language: python
+      always_run: true
       stages: [commit-msg]
