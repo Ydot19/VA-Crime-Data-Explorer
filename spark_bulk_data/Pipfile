@@ -12,6 +12,7 @@ pytest = "*"
 pytest-cov = "*"
 black = "==20.8b1"
 pre-commit = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.9"
