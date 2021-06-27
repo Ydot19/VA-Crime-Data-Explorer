@@ -50,6 +50,7 @@ def main() -> int:
         "style",
         "test",
         "refactor",
+        "dev",
     ]
     # Retrieve the latest commit before the change
     message_file = sys.argv[1]

@@ -137,4 +137,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-spark_bulk_data/data/**
+spark_bulk_data/**/data/**
