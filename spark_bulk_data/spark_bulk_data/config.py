@@ -12,3 +12,10 @@ class BaseConfig:
     COCKROACH_SSL_ROOT_CERT = os.getenv("SSL_ROOT_CERT")
     COCKROACH_SSL_KEY = os.getenv("SSL_KEY")
     COCKROACH_SSL_CERT = os.getenv("SSL_CERT")
+
+
+class SQLConfig:
+    class Types:
+        INTEGER = "INTEGER"
+        STRING = "STRING"
+        DATE = "DATE"
