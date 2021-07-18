@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 psycopg2 = "*"
 pyspark = "==3.0.1"
+pandas = "*"
 
 [dev-packages]
 pytest = "*"
