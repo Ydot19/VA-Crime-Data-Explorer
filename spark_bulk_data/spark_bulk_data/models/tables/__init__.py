@@ -3,6 +3,10 @@ Used to create the models for the tables
 
 This reduces repetitive copy and paste actions
 """
+from os.path import dirname, basename, isfile, join
+import glob
+
+modules = glob.glob(join(dirname(__file__), "*.py"))
 
 
 def create_headers():
