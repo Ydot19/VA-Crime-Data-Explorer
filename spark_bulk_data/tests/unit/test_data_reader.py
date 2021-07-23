@@ -1,6 +1,6 @@
 from unittest import TestCase, mock
 from pyspark.sql import SparkSession, DataFrame
-from spark_bulk_data.utils.data_reader import read_zip_folder
+from spark_bulk_data.utils.spark_data_reader import read_zip_folder
 import zipfile
 import os
 
