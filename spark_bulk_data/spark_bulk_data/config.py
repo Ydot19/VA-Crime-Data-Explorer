@@ -2,6 +2,8 @@ import os
 
 
 class BaseConfig:
+    PROJECT_DIR = os.getenv("PROJECTDIR")
+
     ## Dataset info
     DATA_START_YEAR = os.getenv("START_YEAR")
     DATA_END_YEAR = os.getenv("END_YEAR")
@@ -25,6 +27,6 @@ class BaseConfig:
 
 class SQLConfig:
     class Types:
-        INTEGER = "INTEGER"
+        INTEGER = "NUMERIC(10,0)"
         STRING = "STRING"
         DATE = "DATE"
