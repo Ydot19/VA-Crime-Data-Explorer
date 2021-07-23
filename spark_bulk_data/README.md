@@ -36,6 +36,7 @@ Notes:
 
 ### Pre-req
 
+- postgresql-42.2.23.jar JDBC Jar for Apache Spark
 - Python 3.9.x
 - Apache Spark 3.0.1
 - CockroachDB v21.1.x
