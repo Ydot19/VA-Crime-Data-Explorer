@@ -138,4 +138,5 @@ dmypy.json
 cython_debug/
 
 spark_bulk_data/**/data/**
+spark_bulk_data/**/source_data/**
 temp/**
