@@ -4,6 +4,36 @@ File has no dependency on pipenv environment and can be used outside the environ
 """
 
 
+def unpack_source_data():
+    import tarfile
+    import os
+    import zipfile
+
+    base_path = "spark_bulk_data/resources/source_data"
+
+    print("STARTED  UNPACKING THE TAR FILE...\n")
+    tarred = tarfile.open("source.data.tar")
+    os.makedirs(f"{base_path}/zipped")
+    tarred.extractall(f"{base_path}/zipped")
+    print("FINISHED UNPACKING THE TAR FILE...\n")
+    tarred.close()
+
+    zipped_files = os.listdir(f"{base_path}/zipped")
+    print("STARTED  Unzipping...\n")
+    for zf in zipped_files:
+        src = f"{base_path}/zipped/{zf}"
+        with zipfile.ZipFile(src, "r") as zipped:
+            folder = zf.split(".")[0]
+            unzip_path = f"{base_path}/unzipped/{folder}"
+            os.makedirs(unzip_path)
+            zipped.extractall(unzip_path)
+
+    print("FINISHED Unzipping...\n")
+    # for folder in data_folders:
+    #     folder_path = f"{base_path}/{folder}"
+    #     tarred.add(folder_path, arcname=folder)
+
+
 def create_env_file():
     import inspect
 
@@ -43,4 +73,4 @@ def setup():
 
 
 if __name__ == "__main__":
-    setup()
+    unpack_source_data()
