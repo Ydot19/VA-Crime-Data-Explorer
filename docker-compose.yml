@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+    crdb:
+        container_name: crdb
+        hostname: localhost
+        image: cockroachdb/cockroach:latest-v21.2
+        environment:
+          COCKROACH_USER: ${COCKROACH_USER}
+          COCKROACH_PASSWORD: ${COCKROACH_PASSWORD}
+          COCKROACH_DATABASE: VACrime
+        volumes:
+           - "${PWD}/crdb-logs:/cockroach/cockroach-data"
+           - "${PWD}/spark_bulk_data/temp/certs:/cockroach/certs"
+        command: start-single-node --cluster-name CDB-VACrime --log-file-verbosity=WARNING --certs-dir=/cockroach/certs
+        ports:
+           - "26257:26257"
+           - "8080:8080"
