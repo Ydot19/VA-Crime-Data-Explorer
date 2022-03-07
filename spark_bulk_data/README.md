@@ -27,7 +27,22 @@ Uses pre-commit to set up
 
 ### Docker Setup Notes
 
-#### COMING SOON!! - STAY TUNED
+- Requires setting up 3 environment variables
+  - CRDB_CERTS
+    - Location of SSL certs (node and client certs) on your local computer
+      - When running the `crdb-copy-certs.sh` script, this copies the files to the `./temp/certs` directory
+  - COCKROACH_USER
+  - COCKROACH_PASSWORD
+  - COCKROACH_DB
+
+Run the following command
+```terminal
+$ docker-compose up 
+```
+
+from the root project directory
+
+NOTE: more notes coming on how to automate the importing of env variables and automatically setting the admin USER and project DB
 
 ### Non Docker Setup Notes
 Notes:
