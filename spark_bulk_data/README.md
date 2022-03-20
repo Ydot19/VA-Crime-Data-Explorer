@@ -39,10 +39,10 @@ Run the following command
 ```terminal
 $ docker-compose up 
 ```
-
 from the root project directory
 
-NOTE: more notes coming on how to automate the importing of env variables and automatically setting the admin USER and project DB
+NOTE: 
+- more notes coming on how to automate the importing of env variables and automatically setting the admin USER and project DB
 
 ### Non Docker Setup Notes
 Notes:
@@ -51,10 +51,10 @@ Notes:
 
 ### Pre-req
 
-- postgresql-42.2.23.jar JDBC Jar for Apache Spark
-- Python 3.9.x
-- Apache Spark 3.0.1
-- CockroachDB v21.1.x
+- postgresql-42.3.3.jar JDBC Jar for Apache Spark
+- Python 3.10.x
+- Apache Spark 3.2.1
+- CockroachDB v21.2.x
 
 #### Start Cockroach DB (linux Ubuntu/WSL2)
 
