@@ -63,7 +63,6 @@ def create_gzip_from_spark_df(
         #             with open(f"{folder_path}/{filename}", "rb") as frb:
         #                 shutil.copyfileobj(frb, fwb)
 
-        breakpoint()
         return gzipped_file_paths
 
     return None

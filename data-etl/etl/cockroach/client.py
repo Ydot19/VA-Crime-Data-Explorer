@@ -1,5 +1,5 @@
 import psycopg2
-from spark_bulk_data.config import BaseConfig
+from etl.config import BaseConfig
 
 
 def get_db_client():

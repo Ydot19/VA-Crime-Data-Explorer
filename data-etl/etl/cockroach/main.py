@@ -2,7 +2,7 @@ import string
 
 import pyspark.sql
 from config import BaseConfig
-from spark_bulk_data.models.TableFieldDataClass import TableField
+from etl.models.TableFieldDataClass import TableField
 
 
 class CockRoachDBInteractions:

@@ -1,9 +1,9 @@
-import spark_bulk_data.utils.relationship as rs
-import spark_bulk_data.utils.spark_data_reader as dr
-import spark_bulk_data.utils.data_prep as dp
-import spark_bulk_data.cockroach.main as cdb
-import spark_bulk_data.cockroach.client as cdb_connection
-import spark_bulk_data.utils.spark_client as sc
+import etl.utils.relationship as rs
+import etl.utils.spark_data_reader as dr
+import etl.utils.data_prep as dp
+import etl.cockroach.main as cdb
+import etl.cockroach.client as cdb_connection
+import etl.utils.spark_client as sc
 import os
 import shutil
 

@@ -3,7 +3,7 @@ from zipfile import ZipFile
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StringType, StructField
 
-from spark_bulk_data.config import BaseConfig
+from etl.config import BaseConfig
 
 import pandas as pd
 import io

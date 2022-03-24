@@ -199,7 +199,7 @@ RUN poetry install
 
 CMD ["python3"]
 
-FROM app-code as apache-spark
+FROM app-code as vacrime-spark-starter
 
 ENV SPARK_MASTER_PORT=7077 \
 SPARK_MASTER_WEBUI_PORT=8080 \
