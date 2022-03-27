@@ -2,38 +2,34 @@
 Used to set up the data needed for this section of the project
 File has no dependency on pipenv environment and can be used outside the environment
 """
+import curses
+from curses import wrapper
+from typing import Callable, List
 
 
+def meta_name(func_name: str):
+    def decorator(f: Callable):
+        f.__name__ = func_name
+        return f
+    return decorator
+
+
+@meta_name("Unpack Source Data From Tar File")
 def unpack_source_data():
     import tarfile
     import os
-    import zipfile
+    from pathlib import Path
 
-    base_path = "spark_bulk_data/resources/source_data"
-
+    temp_dir_path = f"{Path().resolve()}/temp"
     print("STARTED  UNPACKING THE TAR FILE...\n")
-    tarred = tarfile.open("source.data.tar")
-    os.makedirs(f"{base_path}/zipped")
-    tarred.extractall(f"{base_path}/zipped")
+    with tarfile.open("data.tar.gz") as tarred:
+        if not os.path.exists(temp_dir_path):
+            os.makedirs(f"{temp_dir_path}")
+        tarred.extractall(f"{temp_dir_path}")
     print("FINISHED UNPACKING THE TAR FILE...\n")
-    tarred.close()
-
-    zipped_files = os.listdir(f"{base_path}/zipped")
-    print("STARTED  Unzipping...\n")
-    for zf in zipped_files:
-        src = f"{base_path}/zipped/{zf}"
-        with zipfile.ZipFile(src, "r") as zipped:
-            folder = zf.split(".")[0]
-            unzip_path = f"{base_path}/unzipped/{folder}"
-            os.makedirs(unzip_path)
-            zipped.extractall(unzip_path)
-
-    print("FINISHED Unzipping...\n")
-    # for folder in data_folders:
-    #     folder_path = f"{base_path}/{folder}"
-    #     tarred.add(folder_path, arcname=folder)
 
 
+@meta_name("Create Env Example File")
 def create_env_file():
     import inspect
 
@@ -68,9 +64,36 @@ def create_env_file():
         f.write(inspect.cleandoc(file_content))
 
 
-def setup():
-    create_env_file()
+SELECT_FROM: List[Callable] = [unpack_source_data, create_env_file]
 
 
-if __name__ == "__main__":
-    unpack_source_data()
+def current_selection(key_action: int, curr: int):
+    max_len = len(SELECT_FROM)
+    if key_action == 258 or key_action == curses.KEY_DOWN:
+        calc_val = curr - 1
+        return max_len - 1 if calc_val < 0 else calc_val
+    elif key_action == 259 or key_action == curses.KEY_UP:
+        calc_val = curr + 1
+        return 0 if calc_val == max_len else calc_val
+    return curr
+
+
+def main(screen: curses.window):
+    curr = 0
+    key_entered = -1
+    while key_entered != curses.KEY_ENTER and key_entered != 10 and key_entered != 13:
+        curr = current_selection(key_entered, curr)
+        screen.clear()
+        screen.refresh()
+        screen.addstr("Select Action: \n\n")
+        for idx, func in enumerate(SELECT_FROM):
+            if idx != curr:
+                screen.addstr(f"{func.__name__}\n")
+            else:
+                screen.addstr(f">> {func.__name__}\n", curses.A_BOLD)
+        key_entered = screen.getch()
+    # execute selection
+    SELECT_FROM[curr]()
+
+
+wrapper(main)

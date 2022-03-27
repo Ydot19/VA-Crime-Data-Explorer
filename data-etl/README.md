@@ -25,6 +25,14 @@ Uses pre-commit to set up
 
 ## Setup
 
+### Unpack Tarball Data File
+
+```terminal
+python -m setup.py
+```
+
+Select `Unpack Source Data From Tar File`
+
 ### Docker Setup Notes
 
 - Requires setting up 3 environment variables
@@ -44,16 +52,11 @@ from the root project directory
 NOTE: 
 - more notes coming on how to automate the importing of env variables and automatically setting the admin USER and project DB
 
-### Non Docker Setup Notes
-Notes:
-
-- Non-dockerized setup and code development done via WSL2 - Ubuntu Linux 20.04
-
 ### Pre-req
 
 - postgresql-42.3.3.jar JDBC Jar for Apache Spark
 - Python 3.10.x
-- Apache Spark 3.2.1
+- Apache Spark 3.2.x
 - CockroachDB v21.2.x
 
 #### Start Cockroach DB (linux Ubuntu/WSL2)
